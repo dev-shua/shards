@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-const DashboardLayout = (children: ReactNode) => {
+const DashboardLayout = ({ children }: { children: ReactNode }) => {
   const { data: session } = useSession();
   return (
     <div>
