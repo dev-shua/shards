@@ -1,6 +1,5 @@
 import Login from "@/components/auth/login";
 import { ShowUser } from "@/components/showUser";
-import { LoginForm } from "@/features/auth/LoginForm";
 
 export default function Home() {
   return (
@@ -8,7 +7,6 @@ export default function Home() {
       <div>
         <h1 className="font-metamorphous text-5xl text-center mb-2">SHARDS</h1>
         <ShowUser />
-        {/* <LoginForm /> */}
         <Login />
       </div>
     </div>

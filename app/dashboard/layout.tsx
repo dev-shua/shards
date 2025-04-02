@@ -28,6 +28,7 @@ const DashboardLayout = (children: ReactNode) => {
           <Button>Log in ?</Button>
         </Link>
       )}
+      <div>{children}</div>
     </div>
   );
 };
