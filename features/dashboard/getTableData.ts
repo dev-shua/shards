@@ -10,6 +10,7 @@ type TablesResult =
 
 export const getTableData = async (): Promise<TablesResult> => {
   const session = await auth();
+  console.log("SESSION DEBUG", session);
   const userId = session?.user?.id;
 
   if (!session?.user?.id) {
