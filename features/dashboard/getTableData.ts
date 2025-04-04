@@ -2,7 +2,6 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/db/prisma";
 import { tableSidebarSelect } from "@/lib/db/selects";
 import { PlayerWithTable, TableSidebarType } from "@/lib/db/types";
-import { NextResponse } from "next/server";
 
 type TablesResult =
   | { error: string }
