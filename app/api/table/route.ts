@@ -6,6 +6,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   const session = await auth();
+  console.log("DEBUG SESSION POST:", session);
 
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -34,6 +35,7 @@ export async function POST(req: Request) {
 
 export async function GET() {
   const session = await auth();
+  console.log("DEBUG SESSION GET:", session);
 
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
