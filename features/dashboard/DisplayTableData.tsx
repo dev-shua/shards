@@ -7,7 +7,7 @@ import {
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/db/prisma";
 import { tableSidebarSelect } from "@/lib/db/selects";
-import { TableSidebarType } from "@/lib/db/types";
+import { PlayerWithTable, TableSidebarType } from "@/lib/db/types";
 import { NextResponse } from "next/server";
 
 export const DisplayTableData = async () => {
@@ -32,7 +32,7 @@ export const DisplayTableData = async () => {
         },
       },
     })
-  ).map((p) => p.table);
+  ).map((p: PlayerWithTable) => p.table);
 
   const allTables: {
     owned: TableSidebarType[];
