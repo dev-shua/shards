@@ -10,12 +10,6 @@ export default {
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id;
-      }
-      return token;
-    },
     async session({ session, user }) {
       const safeUser = user as AdapterUserWithUsername;
       session.user.id = safeUser.id;
