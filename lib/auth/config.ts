@@ -1,6 +1,6 @@
-import { User } from "@prisma/client";
 import { NextAuthConfig } from "next-auth";
 import Discord from "next-auth/providers/discord";
+import { AdapterUserWithUsername } from "../types/auth";
 
 export default {
   providers: [
@@ -17,8 +17,9 @@ export default {
       return token;
     },
     async session({ session, user }) {
-      session.user.id = user.id;
-      session.user.username = (user as User).username;
+      const safeUser = user as AdapterUserWithUsername;
+      session.user.id = safeUser.id;
+      session.user.username = safeUser.username ?? null;
       return session;
     },
   },
