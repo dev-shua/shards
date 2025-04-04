@@ -4,43 +4,14 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { auth } from "@/lib/auth";
-import { prisma } from "@/lib/db/prisma";
-import { tableSidebarSelect } from "@/lib/db/selects";
-import { PlayerWithTable, TableSidebarType } from "@/lib/db/types";
-import { NextResponse } from "next/server";
+import { getTableData } from "./getTableData";
 
 export const DisplayTableData = async () => {
-  const session = await auth();
-  const userId = session?.user?.id;
+  const allTables = await getTableData();
 
-  if (!session?.user?.id) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if ("error" in allTables) {
+    return <div className="text-red-500">{allTables.error}</div>;
   }
-
-  const ownedTables: TableSidebarType[] = await prisma.table.findMany({
-    where: { ownerId: userId },
-    select: tableSidebarSelect,
-  });
-
-  const joinedTables: TableSidebarType[] = (
-    await prisma.player.findMany({
-      where: { userId },
-      select: {
-        table: {
-          select: tableSidebarSelect,
-        },
-      },
-    })
-  ).map((p: PlayerWithTable) => p.table);
-
-  const allTables: {
-    owned: TableSidebarType[];
-    joined: TableSidebarType[];
-  } = {
-    owned: ownedTables,
-    joined: joinedTables,
-  };
 
   return (
     <div className="space-y-5">
