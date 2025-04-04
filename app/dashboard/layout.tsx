@@ -1,15 +1,15 @@
 import { ReactNode } from "react";
-import { signOut } from "next-auth/react";
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { useSession } from "@/lib/useSession";
+// import { signOut } from "next-auth/react";
+// import Image from "next/image";
+// import Link from "next/link";
+// import { Button } from "@/components/ui/button";
+// import { useSession } from "@/lib/useSession";
 import { ProfileMenu } from "@/components/navigation/profile-menu";
 import { UsernamePrompt } from "@/components/user/UsernamePrompt";
 import { LeftBar } from "@/features/dashboard/LeftBar";
 import { RightBar } from "@/features/dashboard/RightBar";
-import { redirect } from "next/navigation";
-import { CreateTableButton } from "@/components/buttons/CreateTableButton";
+// import { redirect } from "next/navigation";
+// import { CreateTableButton } from "@/components/buttons/CreateTableButton";
 
 const DashboardLayout = ({ children }: { children: ReactNode }) => {
   return (

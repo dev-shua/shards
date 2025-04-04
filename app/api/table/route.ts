@@ -2,7 +2,6 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/db/prisma";
 import { getUserTables } from "@/lib/table/getUserTables";
 import { generateTableSlug } from "@/lib/utils/slug";
-import { cp } from "fs";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {

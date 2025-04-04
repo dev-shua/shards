@@ -14,7 +14,7 @@ export const UsernamePrompt = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    // formState: { errors, isSubmitting },
   } = useForm();
   const [open, setOpen] = useState(false);
 
