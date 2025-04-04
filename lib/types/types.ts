@@ -19,3 +19,12 @@ export const loginSchema = z.object({
 });
 
 export type TLoginSchema = z.infer<typeof loginSchema>;
+
+export const signinSchema = z.object({});
+
+export const createTableSchema = z.object({
+  name: z.string().min(3, "Table name must be at least 3 characters"),
+  description: z.string(),
+});
+
+export type TCreateTableSchema = z.infer<typeof createTableSchema>;

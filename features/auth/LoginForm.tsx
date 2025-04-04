@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { loginSchema, TLoginSchema } from "@/lib/types";
+import { loginSchema, TLoginSchema } from "@/lib/types/types";
 import { useMockedUserStore } from "@/store/mockUser";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";

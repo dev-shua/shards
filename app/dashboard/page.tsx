@@ -1,5 +1,14 @@
+import { CreateTableButton } from "@/components/buttons/CreateTableButton";
+
 const DashboardPage = () => {
-  return <div>Dashboard</div>;
+  return (
+    <>
+      <div>
+        <CreateTableButton />
+      </div>
+      <div>Dashboard</div>
+    </>
+  );
 };
 
 export default DashboardPage;
