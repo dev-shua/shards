@@ -14,6 +14,8 @@ export const UsernamePrompt = () => {
   const { data: session } = useSession();
   const user = session?.user;
 
+  console.log("User:", user);
+
   const {
     register,
     handleSubmit,
