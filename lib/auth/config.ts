@@ -17,5 +17,4 @@ export default {
       return session;
     },
   },
-  debug: true,
 } satisfies NextAuthConfig;

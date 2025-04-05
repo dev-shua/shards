@@ -19,7 +19,9 @@ model User {
   Authenticator Authenticator[]
 
   // SHARDS data
-  username      String?         @unique
+  username      String?
+  tag           String          @unique
+
   participations Player[]
   tablesOwned   Table[]         @relation("UserOwnedTables")
 

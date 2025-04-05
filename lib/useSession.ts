@@ -11,6 +11,7 @@ export function useSession() {
           id: "0",
           name: "Dev Shua",
           username: "",
+          tag: "00000",
           email: "dev@localhost",
           image: "https://placekitten.com/100/100",
         },

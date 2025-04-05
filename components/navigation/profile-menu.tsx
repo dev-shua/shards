@@ -18,7 +18,7 @@ export const ProfileMenu = () => {
       </div>
       <div className="flex flex-col h-12 justify-evenly">
         <span className="text-sm truncate max-w-[160px]">{user?.name}</span>
-        <span className="italic text-sm opacity-40">Something</span>
+        <span className="italic text-sm opacity-40">#{user?.tag}</span>
       </div>
     </div>
   );

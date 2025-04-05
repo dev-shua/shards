@@ -11,6 +11,7 @@ export async function getSession(): Promise<Session | null> {
         name: "Dev Shua",
         username: null as string | null,
         email: "dev@localhost",
+        tag: "00000",
         image: "https://placekitten.com/100/100",
       },
       expires: "2099-12-31T23:59:59Z",
