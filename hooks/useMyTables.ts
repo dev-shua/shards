@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-type Table = {
+export type Table = {
   id: string;
   name: string;
   slug: string;
@@ -8,7 +8,7 @@ type Table = {
   ownerId: string;
 };
 
-type TablesResponse = {
+export type TablesResponse = {
   owned: Table[];
   joined: Table[];
 };

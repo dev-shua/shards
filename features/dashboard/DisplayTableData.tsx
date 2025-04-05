@@ -6,7 +6,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { TablesResponse, useMyTables } from "@/hooks/useMyTables";
+import { useMyTables } from "@/hooks/useMyTables";
+import type { TablesResponse } from "@/hooks/useMyTables";
 
 export const DisplayTableData = () => {
   const { data, isLoading, isError } = useMyTables();
