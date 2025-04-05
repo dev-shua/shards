@@ -9,7 +9,7 @@ export const SettingsButton = ({ slug }: { slug: string }) => {
   return (
     <Button
       onClick={() => router.push(`/table/${slug}/settings`)}
-      variant="ghost"
+      variant="outline"
     >
       <Settings /> Settings
     </Button>
