@@ -1,21 +1,24 @@
+"use client";
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { getTableData } from "./getTableData";
+import { TablesResponse, useMyTables } from "@/hooks/useMyTables";
 
-export const DisplayTableData = async () => {
-  const allTables = await getTableData();
+export const DisplayTableData = () => {
+  const { data, isLoading, isError } = useMyTables();
 
-  if ("error" in allTables) {
-    return <div className="text-red-500">{allTables.error}</div>;
-  }
+  if (!isLoading) return <p>Loading...</p>;
+  if (isError || !data) return <p>Error while loading</p>;
+  const tables = data! as TablesResponse;
+  const { owned, joined } = tables;
 
   return (
     <div className="space-y-5">
-      {allTables.owned.map((table) => {
+      {owned.map((table) => {
         return (
           <Accordion
             type="single"

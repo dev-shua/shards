@@ -8,6 +8,7 @@ import { createTableSchema, TCreateTableSchema } from "@/lib/types/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export const CreateTableForm = () => {
   const router = useRouter();
@@ -17,23 +18,46 @@ export const CreateTableForm = () => {
     formState: { errors, isSubmitting },
   } = useForm<TCreateTableSchema>({ resolver: zodResolver(createTableSchema) });
 
-  const onSubmit = async (data: TCreateTableSchema) => {
-    const res = await fetch("/api/table", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: data.name,
-        description: data.description,
-      }),
-    });
+  const queryClient = useQueryClient();
 
-    if (res.ok) {
-      const table = await res.json();
+  const createTableMutation = useMutation({
+    mutationFn: async (data: TCreateTableSchema) => {
+      const res = await fetch("/api/table", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("Error while creating new Table");
+      return res.json();
+    },
+    onSuccess: (table) => {
+      queryClient.invalidateQueries({ queryKey: ["my-tables"] });
       router.push(`/dashboard/table/${table.slug}`);
-    } else {
-      console.error(await res.json());
+    },
+  });
+
+  const onSubmit = async (data: TCreateTableSchema) => {
+    // const res = await fetch("/api/table", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     name: data.name,
+    //     description: data.description,
+    //   }),
+    // });
+
+    // if (res.ok) {
+    //   const table = await res.json();
+    //   router.push(`/dashboard/table/${table.slug}`);
+    // } else {
+    //   console.error(await res.json());
+    // }
+    try {
+      await createTableMutation.mutateAsync(data);
+    } catch (error) {
+      console.error("Error:", error);
     }
   };
 

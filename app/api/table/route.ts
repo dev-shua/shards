@@ -34,14 +34,13 @@ export async function POST(req: Request) {
 
 export async function GET() {
   const session = await auth();
-  console.log("DEBUG SESSION GET:", session);
 
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const userId = session.user.id;
-  const allTables = getUserTables(userId);
+  const allTables = await getUserTables(userId);
 
   return NextResponse.json(allTables);
 }

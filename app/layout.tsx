@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { SessionProvider } from "next-auth/react";
 import "./globals.css";
+import { ReactQueryProvider } from "@/lib/providers/ReactQueryProvider";
 
 const manRopeFont = localFont({
   src: "./fonts/Manrope-VariableFont_wght.ttf",
@@ -28,7 +29,9 @@ export default function RootLayout({
       <body
         className={`${manRopeFont.variable} ${metamorphousFont.variable} font-manrope antialiased bg-stone-800 text-stone-200`}
       >
-        <SessionProvider>{children}</SessionProvider>
+        <ReactQueryProvider>
+          <SessionProvider>{children}</SessionProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );
