@@ -12,7 +12,7 @@ export async function DELETE(
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const table = await prisma.table.findUnique({ where: { id: params.id } });
+  const table = await prisma.table.findUnique({ where: { id: id } });
 
   if (!table || table.ownerId !== session.user.id) {
     return NextResponse.json({ error: "Not allowed" }, { status: 403 });
