@@ -3,10 +3,11 @@ import { prisma } from "@/lib/db/prisma";
 export default async function TablePage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
   const table = await prisma.table.findUnique({
-    where: { slug: params.slug },
+    where: { slug: slug },
   });
 
   if (!table) {
