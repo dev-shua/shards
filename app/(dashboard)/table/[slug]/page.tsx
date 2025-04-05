@@ -17,7 +17,7 @@ export default async function TablePage({
 
   return (
     <div className="space-y-4">
-      <div className="pb-2 flex justify-items-end border-b-1 border-stone-500/50">
+      <div className="pb-2 grid grid-flow-col justify-items-end border-b-1 border-stone-500/50">
         <SettingsButton slug={slug} />
       </div>
       <h2 className="text-3xl">{table.name}</h2>
