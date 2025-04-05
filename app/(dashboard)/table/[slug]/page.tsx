@@ -16,11 +16,14 @@ export default async function TablePage({
   }
 
   return (
-    <div>
-      <div>
+    <div className="space-y-4">
+      <div className="pb-2 border-b-1 border-stone-500/50">
         <SettingsButton slug={slug} />
       </div>
-      Table : {table.name}
+      <h2 className="text-3xl">{table.name}</h2>
+      <div className="border-1 border-stone-500/50 p-2 my-5">
+        {table.description}
+      </div>
     </div>
   );
 }
