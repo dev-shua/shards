@@ -7,7 +7,10 @@ import { Settings } from "lucide-react";
 export const SettingsButton = ({ slug }: { slug: string }) => {
   const router = useRouter();
   return (
-    <Button onClick={() => router.push(`/table/${slug}settings`)}>
+    <Button
+      onClick={() => router.push(`/table/${slug}/settings`)}
+      variant="ghost"
+    >
       <Settings /> Settings
     </Button>
   );
