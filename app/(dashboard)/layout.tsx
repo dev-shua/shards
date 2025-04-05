@@ -8,6 +8,7 @@ import { ProfileMenu } from "@/components/navigation/profile-menu";
 import { UsernamePrompt } from "@/components/user/UsernamePrompt";
 import { LeftBar } from "@/features/dashboard/LeftBar";
 import { RightBar } from "@/features/dashboard/RightBar";
+import { TopNavigation } from "@/features/dashboard/TopNavigation";
 // import { redirect } from "next/navigation";
 // import { CreateTableButton } from "@/components/buttons/CreateTableButton";
 
@@ -30,7 +31,9 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
         </div>
       </div>
 
-      <div className="col-start-2 col-end-3 p-4 text-center">Header</div>
+      <div className="col-start-2 col-end-3 p-4 text-center">
+        <TopNavigation />
+      </div>
 
       <div className="col-start-2 col-end-3 p-8">{children}</div>
     </div>

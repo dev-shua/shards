@@ -32,7 +32,7 @@ export const CreateTableForm = () => {
     },
     onSuccess: (table) => {
       queryClient.invalidateQueries({ queryKey: ["my-tables"] });
-      router.push(`/dashboard/table/${table.slug}`);
+      router.push(`/table/${table.slug}`);
     },
   });
 
