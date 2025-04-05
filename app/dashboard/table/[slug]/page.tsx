@@ -6,7 +6,7 @@ interface PageProps {
   };
 }
 
-const TablePage = async ({ params }: PageProps) => {
+export default async function TablePage({ params }: PageProps) {
   const table = await prisma.table.findUnique({
     where: { slug: params.slug },
   });
@@ -16,6 +16,4 @@ const TablePage = async ({ params }: PageProps) => {
   }
 
   return <div>Table : {table.name}</div>;
-};
-
-export default TablePage;
+}
