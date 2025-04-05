@@ -1,12 +1,10 @@
 import { prisma } from "@/lib/db/prisma";
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default async function TablePage({ params }: PageProps) {
+export default async function TablePage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const table = await prisma.table.findUnique({
     where: { slug: params.slug },
   });
