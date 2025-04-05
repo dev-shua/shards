@@ -28,3 +28,9 @@ export const createTableSchema = z.object({
 });
 
 export type TCreateTableSchema = z.infer<typeof createTableSchema>;
+
+export const editUsernameSchema = z.object({
+  username: z.string().min(2, "Username must be at least 2 characters"),
+});
+
+export type TEditUsernameSchema = z.infer<typeof editUsernameSchema>;

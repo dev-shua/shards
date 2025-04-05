@@ -14,6 +14,7 @@ export default {
       const safeUser = user as AdapterUserWithUsername;
       session.user.id = safeUser.id;
       session.user.username = safeUser.username ?? null;
+      session.user.tag = user.tag;
       return session;
     },
   },
