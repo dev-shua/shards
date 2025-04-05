@@ -1,4 +1,5 @@
 import { CreateTableButton } from "@/components/buttons/CreateTableButton";
+import DashboardTableList from "@/features/dashboard/DisplayTables";
 
 const DashboardPage = () => {
   return (
@@ -6,7 +7,9 @@ const DashboardPage = () => {
       <div className="mt-5 flex justify-end">
         <CreateTableButton />
       </div>
-      <div>Dashboard</div>
+      <div>
+        <DashboardTableList />
+      </div>
     </>
   );
 };
