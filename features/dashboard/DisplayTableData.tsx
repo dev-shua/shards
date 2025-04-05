@@ -12,7 +12,7 @@ import type { TablesResponse } from "@/hooks/useMyTables";
 export const DisplayTableData = () => {
   const { data, isLoading, isError } = useMyTables();
 
-  if (!isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p>Loading...</p>;
   if (isError || !data) return <p>Error while loading</p>;
   const tables = data! as TablesResponse;
   const { owned, joined } = tables;
