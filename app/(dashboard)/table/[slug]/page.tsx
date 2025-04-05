@@ -1,3 +1,4 @@
+import { SettingsButton } from "@/components/buttons/SettingsButton";
 import { prisma } from "@/lib/db/prisma";
 
 export default async function TablePage({
@@ -14,5 +15,12 @@ export default async function TablePage({
     return <div>Table introuvable...</div>;
   }
 
-  return <div>Table : {table.name}</div>;
+  return (
+    <div>
+      <div>
+        <SettingsButton slug={slug} />
+      </div>
+      Table : {table.name}
+    </div>
+  );
 }
