@@ -5,20 +5,21 @@ import { PrismaClient } from "@prisma/client";
 import { generateUniqueHexTag } from "../users";
 
 const prisma = new PrismaClient();
+const baseAdapter = PrismaAdapter(prisma);
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  adapter: PrismaAdapter(prisma),
-  session: { strategy: "database" },
-  ...authConfig,
-
-  events: {
-    async createUser({ user }) {
+  adapter: {
+    ...baseAdapter,
+    async createUser(data) {
       const tag = await generateUniqueHexTag();
-
-      await prisma.user.update({
-        where: { id: user.id },
-        data: { tag: tag },
+      return prisma.user.create({
+        data: {
+          ...data,
+          tag: tag,
+        },
       });
     },
   },
+  session: { strategy: "database" },
+  ...authConfig,
 });
