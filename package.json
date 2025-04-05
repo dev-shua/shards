@@ -56,5 +56,13 @@
     "eslint-config-next": "15.2.4",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "resolutions": {
+    "@auth/core": "^0.38.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "@auth/core": "^0.38.0"
+    }
   }
 }
